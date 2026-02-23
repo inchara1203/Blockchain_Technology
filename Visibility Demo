@@ -1,0 +1,44 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract VisibilityDemo{
+  function publicFunc() public pure returns(string memory){
+     return "public ";
+    }
+  function externalFunc() external pure returns(string memory){
+    return "external";
+  } 
+  function internalfunc() internal pure returns(string memory){
+    return"Internal";
+  }
+  function privatefunc() private  pure returns(string memory){
+    return"private";
+  }
+  function testCalls()public pure returns(
+    string memory,
+    string memory,
+    string memory
+)
+{
+    return (
+        publicFunc(),
+        internalfunc(),
+        privatefunc()
+        //externalFunc();
+    );
+}
+}
+
+
+contract Child is VisibilityDemo{
+    function testChild()public pure returns(
+        string memory,
+        string memory
+    ){
+        return(
+            publicFunc(),
+            internalfunc()
+            //privatefunc();
+            //externalFunc();
+        );
+    }
+}
