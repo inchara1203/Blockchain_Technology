@@ -1,0 +1,20 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract simpleATM{
+    uint public balance;
+
+    constructor(uint initialBalance){
+    balance = initialBalance;
+    }
+    function withdraw(uint amount)external{
+        _verifyBalance(amount);
+        _updateBalance(amount);
+    }
+    funtion _verifyBalance(uint amount) internal view {
+        require(balance>=amount,"Insufficient Balance");
+    }
+    function _updateBalance(uint amount) internal {
+        balance -= amount;
+    }
+    
+}
