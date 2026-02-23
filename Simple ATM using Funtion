@@ -10,7 +10,7 @@ contract simpleATM{
         _verifyBalance(amount);
         _updateBalance(amount);
     }
-    funtion _verifyBalance(uint amount) internal view {
+    function _verifyBalance(uint amount) internal view {
         require(balance>=amount,"Insufficient Balance");
     }
     function _updateBalance(uint amount) internal {
